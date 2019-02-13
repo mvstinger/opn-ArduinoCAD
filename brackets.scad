@@ -36,10 +36,12 @@ module ConicalBracket() {
 //  RightAngleBracket   Right angle bracket
 //  ------------------------------------------------------
 RAB_THICKNESS = 3.0;
-RAB_WID = 25.4;
 RAB_DEPTH = 25.4;
 RAB_HEI = 35 + 30;
 RAB_HOLE_ID = 14;
+RAB_HOLE_OFFSET = 7;
+RAB_WID = 25.4 + RAB_HOLE_ID;
+
 module RightAngleBracket() {
   difference() {
     union() {
@@ -51,7 +53,7 @@ module RightAngleBracket() {
     T([0,-1,-1]) {
       cube(size=[RAB_WID+2, RAB_THICKNESS+2, RAB_HEI+1]);
     };
-    TR([RAB_WID/2,-1,RAB_HEI+RAB_HOLE_ID],[-90,0,0]) {
+    TR([RAB_WID/2+RAB_HOLE_OFFSET,-1,RAB_HEI+RAB_HOLE_ID],[-90,0,0]) {
       cylinder(d=RAB_HOLE_ID, h=RAB_THICKNESS+2);
     };
   };
@@ -67,5 +69,4 @@ $fa=1;
 $fs=0.5;
 //ConicalBracket();
 //RightAngleBracket();
-
 //  ======================================================
